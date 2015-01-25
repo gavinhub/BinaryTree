@@ -1,6 +1,6 @@
 BinaryTree for LeetCode
 ==============
-***BinaryTree.py*** is a handful tool which can **construct** and **display** the binary trees you need when coding for [LeetCode](https://oj.leetcode.com/)
+***BinaryTree.py*** is a handy tool which can **construct** and **display** the binary trees you need when coding for [LeetCode](https://oj.leetcode.com/)
 
 DEMO
 ------------
