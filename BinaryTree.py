@@ -111,6 +111,24 @@ class BinaryTree:
 	def tree(self):
 		return self.__root
 
+	def set_tree(self, root):
+		self.__root = root
+		self.__height = 1
+		self.__size = 0
+		que = [root, None]
+		while len(que) > 1:
+			top = que.pop(0)
+			if top is None:
+				que.append(None)
+				self.__height += 1
+			else:
+				self.__size += 1
+				if top.left:
+					que.append(top.left)
+				if top.right:
+					que.append(top.right)
+
+
 
 
 if __name__ == '__main__':
