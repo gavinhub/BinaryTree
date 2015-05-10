@@ -11,7 +11,10 @@ class BinaryTree:
 		self.__root = None
 		self.__height = 0
 		if serial:
-			self.construct(serial)
+			if isinstance(serial, list):
+				self.construct(serial)
+			elif isinstance(serial, TreeNode):
+				self.set_tree(serial)
 
 	# serial should be a list
 	def construct(self, serial):
@@ -134,3 +137,5 @@ class BinaryTree:
 if __name__ == '__main__':
 	tree = BinaryTree([1,2,3,4,5,'#',6,7,'#','#','#','#',8])
 	tree.display()
+	z = BinaryTree(tree.tree())
+	z.display()

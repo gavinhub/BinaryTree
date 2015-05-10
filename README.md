@@ -8,9 +8,10 @@ DEMO
 	
 		from BinaryTree import *
 	
-1. Construct a binary tree with a list of values/objects
+1. Construct a binary tree from a list of values/objects or a binary tree
 
-		t = BinaryTree([1,2,3,4,5,'#',6,7,'#','#','#','#',8])
+		t1 = BinaryTree([1,2,3,4,5,'#',6,7,'#','#','#','#',8])
+		t2 = BinaryTree(t1.tree())
 
 1. Get the root of the binary tree
 
