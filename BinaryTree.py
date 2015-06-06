@@ -114,8 +114,8 @@ class BinaryTree:
 	def tree(self):
 		return self.__root
 
-    def height(self):
-        return self.__height
+	def height(self):
+		return self.__height
 
 	def set_tree(self, root):
 		self.__root = root
