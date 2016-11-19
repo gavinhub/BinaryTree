@@ -66,62 +66,69 @@ class BinaryTree:
                         self.__size += 1
                 i += 1
 
-    def display(self):
+    def __str__(self):
         level = self.__height
         # leading, margin
         que = [self.__root, None]
         first = True
-        itemLine = []
-        slashLayer = int(2 ** (level - 2))
-        slashLine = [[] for i in xrange(slashLayer)]
+        item_line = []
+        slash_layer = int(2 ** (level - 2))
+        slash_line = [[] for i in xrange(slash_layer)]
         printed = 0
+
+        ret = ""
+
         while len(que) > 0 and printed <= self.__height:
             top = que[0]
             que = que[1:]
             if top is None:
                 # print items
-                print ''.join(itemLine)
+                ret += ''.join(item_line) + '\n'
                 # print slash
-                for line in slashLine:
-                    print ''.join(line)
+                for line in slash_line:
+                    ret += ''.join(line) + '\n'
                 printed += 1
                 first = True
                 level -= 1
-                itemLine = []
-                slashLayer = int(2 ** (level - 2))
-                slashLine = [[] for i in xrange(slashLayer)]
+                item_line = []
+                slash_layer = int(2 ** (level - 2))
+                slash_line = [[] for i in xrange(slash_layer)]
                 if len(que) > 0:
                     que.append(None)
                 continue
             if first:
-                # print leading SPACEs
-                itemLine.append(' ' * int(2 ** (level - 1) - 1))
-                for y in xrange(slashLayer):
-                    slashLine[y].append(' ' * int(2 ** (level - 2) - 1))
+                # print leading SPACE
+                item_line.append(' ' * int(2 ** (level - 1) - 1))
+                for y in xrange(slash_layer):
+                    slash_line[y].append(' ' * int(2 ** (level - 2) - 1))
                 first = False
             if isinstance(top, TreeNode):
-                itemLine.append(str(top.val))
+                item_line.append(str(top.val))
                 que.append(top.left if top.left else '#')
                 que.append(top.right if top.right else '#')
-                for line in xrange(len(slashLine)):
-                    for i in xrange(slashLayer + 1):
-                        if i == slashLayer - 1 - line:
-                            slashLine[line].append('/' if top.left else ' ')
+                for line in xrange(len(slash_line)):
+                    for i in xrange(slash_layer + 1):
+                        if i == slash_layer - 1 - line:
+                            slash_line[line].append('/' if top.left else ' ')
                         else:
-                            slashLine[line].append(' ')
-                for line in xrange(len(slashLine)):
-                    for i in xrange(slashLayer + int(2 ** (level - 1)) - 1):
+                            slash_line[line].append(' ')
+                for line in xrange(len(slash_line)):
+                    for i in xrange(slash_layer + int(2 ** (level - 1)) - 1):
                         if i == line:
-                            slashLine[line].append('\\' if top.right else ' ')
+                            slash_line[line].append('\\' if top.right else ' ')
                         else:
-                            slashLine[line].append(' ')
+                            slash_line[line].append(' ')
             else:
                 que.append('#')
                 que.append('#')
-                itemLine.append(' ')
-                for line in slashLine:
+                item_line.append(' ')
+                for line in slash_line:
                     line.append(' ' * int(2 ** level))
-            itemLine.append(' ' * int(2 ** level - 1))
+            item_line.append(' ' * int(2 ** level - 1))
+        return ret
+
+    def display(self):
+        print str(self)
 
     def root(self):
         return self.__root
@@ -146,9 +153,3 @@ class BinaryTree:
                 if top.right:
                     que.append(top.right)
 
-
-if __name__ == '__main__':
-    tree = BinaryTree([1, 2, 3, 4, 5, '#', 6, 7, '#', '#', '#', '#', 8])
-    tree.display()
-    z = BinaryTree(tree.root())
-    z.display()

@@ -17,7 +17,8 @@ DEMO
 1. Get the root of the binary tree
 
 		r = t.root()
-		print r # Out: [4] Left -> None Right -> None
+		print r 
+		# Out: [4] Left -> None Right -> None
 
 1. Display the tree
 
@@ -39,6 +40,11 @@ DEMO
 		7             8 
 
 		
+1. Test
+	
+	    python -m unittest -v test
+
+
 LeetCode Binary Tree Serialization
 -----------------
 See [LeetCode](https://oj.leetcode.com/problems/binary-tree-level-order-traversal/), click "read more on how binary tree is serialized on OJ"
